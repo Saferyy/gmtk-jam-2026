@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://b2vtsn0bc3wio"]
+
+[ext_resource type="Script" uid="uid://dn73etuewecha" path="res://World/character_body_3d.gd" id="1_l8h54"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kx5sw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kx5sw"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=816631736]
+script = ExtResource("1_l8h54")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1360824831]
+shape = SubResource("CapsuleShape3D_kx5sw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1940402849]
+mesh = SubResource("CapsuleMesh_kx5sw")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1255432072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.1970165)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=537750905]
+
+[node name="VSplitContainer" type="VSplitContainer" parent="CanvasLayer" unique_id=1465289310]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -2.0
+offset_right = 53.0
+offset_bottom = -2.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label_counter" type="Label" parent="CanvasLayer/VSplitContainer" unique_id=1699114994]
+layout_mode = 2
+text = "100
+"
+
+[node name="Slider_Counter" type="VSlider" parent="CanvasLayer/VSplitContainer" unique_id=430745595]
+layout_mode = 2
+max_value = 1000.0
+value = 100.0
+
+[node name="Timer_counter" type="Timer" parent="." unique_id=1972702056]
+
+[connection signal="timeout" from="Timer_counter" to="." method="_on_timer_counter_timeout"]

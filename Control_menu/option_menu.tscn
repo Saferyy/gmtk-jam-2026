@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://dbn42rmuoejj1"]
+
+[ext_resource type="Script" uid="uid://bbwkmgok8mmt2" path="res://Control_menu/audio_option.gd" id="1_drhll"]
+[ext_resource type="Script" uid="uid://buh62ki5lh6rw" path="res://Control_menu/option_menu.gd" id="1_glkfw"]
+
+[node name="Option menu" type="Control" unique_id=1952682028]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_glkfw")
+
+[node name="AudioOption" type="Control" parent="." unique_id=1786209995]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 9.0
+offset_top = 16.0
+offset_right = 49.0
+offset_bottom = 56.0
+size_flags_horizontal = 0
+script = ExtResource("1_drhll")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AudioOption" unique_id=331781962]
+layout_mode = 1
+offset_right = 500.0
+offset_bottom = 200.0
+
+[node name="Label Master" type="Label" parent="AudioOption/VBoxContainer" unique_id=1539439285]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Master"
+
+[node name="HSlider Master" type="HSlider" parent="AudioOption/VBoxContainer" unique_id=679647837]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label Music" type="Label" parent="AudioOption/VBoxContainer" unique_id=16901546]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Music"
+
+[node name="HSlider Music" type="HSlider" parent="AudioOption/VBoxContainer" unique_id=684363613]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label3" type="Label" parent="AudioOption/VBoxContainer" unique_id=1195602506]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "SFX"
+
+[node name="HSlider3 SFX" type="HSlider" parent="AudioOption/VBoxContainer" unique_id=117369274]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="AudioOption" unique_id=148270199]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 212.0
+offset_right = 499.0
+offset_bottom = 243.0
+text = "Apply"
+
+[connection signal="mouse_exited" from="AudioOption/VBoxContainer/HSlider Master" to="AudioOption" method="_on_h_slider_master_mouse_exited"]
+[connection signal="mouse_exited" from="AudioOption/VBoxContainer/HSlider Music" to="AudioOption" method="_on_h_slider_music_mouse_exited"]
+[connection signal="mouse_exited" from="AudioOption/VBoxContainer/HSlider3 SFX" to="AudioOption" method="_on_h_slider_3_mouse_exited"]
+[connection signal="pressed" from="AudioOption/Button" to="." method="_on_button_pressed"]

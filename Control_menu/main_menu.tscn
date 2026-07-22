@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bmvmlr4sf4gnx"]
+
+[ext_resource type="PackedScene" uid="uid://dbn42rmuoejj1" path="res://Control_menu/option_menu.tscn" id="1_ipvss"]
+[ext_resource type="Script" uid="uid://cgtib3efhkdnp" path="res://Control_menu/play.gd" id="1_lmorp"]
+
+[node name="Main Menu" type="Control" unique_id=1580663029]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.99204874, 1.0006089)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1427029366]
+
+[node name="Title" type="Label" parent="CanvasLayer" unique_id=408650173]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_top = 82.0
+offset_right = 37.0
+offset_bottom = 105.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "TITLE"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=958443970]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -100.0
+offset_right = 250.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=243842147]
+layout_mode = 2
+text = "Play"
+script = ExtResource("1_lmorp")
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=964934288]
+layout_mode = 2
+size_flags_vertical = 4
+text = "⚙️  Settings"
+
+[node name="Option menu" parent="CanvasLayer/VBoxContainer/Button" unique_id=1952682028 instance=ExtResource("1_ipvss")]
+layout_mode = 1
+offset_top = 114.0
+offset_right = 0.0
+offset_bottom = 114.0
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Play" to="CanvasLayer/VBoxContainer/Play" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="CanvasLayer/VBoxContainer/Button/Option menu" method="_on_button_pressed2"]
