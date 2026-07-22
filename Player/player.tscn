@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b2vtsn0bc3wio"]
 
 [ext_resource type="Script" uid="uid://dn73etuewecha" path="res://World/character_body_3d.gd" id="1_l8h54"]
+[ext_resource type="Script" uid="uid://c0vqm7yb6ny5m" path="res://Player/camera_root.gd" id="2_4ntmi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kx5sw"]
 
@@ -9,14 +10,37 @@
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=816631736]
 script = ExtResource("1_l8h54")
 
+[node name="Camera Root" type="Node3D" parent="." unique_id=146140909]
+script = ExtResource("2_4ntmi")
+
+[node name="camrot_h" type="Node3D" parent="Camera Root" unique_id=490427702]
+
+[node name="camrot_v" type="Node3D" parent="Camera Root/camrot_h" unique_id=545251795]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0447029, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Camera Root/camrot_h/camrot_v" unique_id=333037909]
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="Camera Root/camrot_h/camrot_v/SpringArm3D" unique_id=2023965392]
+
+[node name="Camera Root" type="Node3D" parent="Camera Root" unique_id=166629932]
+script = ExtResource("2_4ntmi")
+
+[node name="camrot_h" type="Node3D" parent="Camera Root/Camera Root" unique_id=494559482]
+
+[node name="camrot_v" type="Node3D" parent="Camera Root/Camera Root/camrot_h" unique_id=994884407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0447029, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Camera Root/Camera Root/camrot_h/camrot_v" unique_id=178121556]
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="Camera Root/Camera Root/camrot_h/camrot_v/SpringArm3D" unique_id=1475055257]
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1360824831]
 shape = SubResource("CapsuleShape3D_kx5sw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1940402849]
 mesh = SubResource("CapsuleMesh_kx5sw")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1255432072]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.1970165)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=537750905]
 
