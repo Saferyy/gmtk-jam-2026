@@ -15,19 +15,21 @@ var is_doing_action: bool= true
 
 func _ready() -> void:
 	@warning_ignore("integer_division")
-	Label_counter.text = 	str(COUNTER) 
+	Label_counter.text = str(COUNTER) 
 	Slider_Counter.value= COUNTER
+	Slider_Counter.max_value=COUNTER
 
 	
 func counter():
 	if Timer_counter_ready == true :
 		COUNTER =COUNTER-1
+		Label_counter.text = str(COUNTER) 
+		Slider_Counter.value= COUNTER
 		print("COUNTER",COUNTER)
 		Timer_counter_ready = false
 		Timer_counter.start()
 		@warning_ignore("integer_division")
-		Label_counter.text = 	str(COUNTER/10) 
-		Slider_Counter.value= COUNTER
+
 
 		
 

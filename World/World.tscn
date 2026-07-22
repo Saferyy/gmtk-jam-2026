@@ -14,11 +14,33 @@ background_mode = 2
 sky = SubResource("Sky_folwd")
 glow_enabled = true
 
-[sub_resource type="QuadMesh" id="QuadMesh_hyufp"]
-size = Vector2(100, 100)
+[sub_resource type="QuadMesh" id="QuadMesh_y6flb"]
+size = Vector2(100, 50)
+center_offset = Vector3(0, -25, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kx5sw"]
-size = Vector3(10, 10, 0.1)
+size = Vector3(100, 50, 0.1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_il6x7"]
+flip_faces = true
+size = Vector2(100, 50)
+center_offset = Vector3(0, -25, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_folwd"]
+size = Vector2(100, 50)
+center_offset = Vector3(0, -25, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_mlekv"]
+flip_faces = true
+size = Vector2(100, 50)
+center_offset = Vector3(0, -25, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_hyufp"]
+flip_faces = true
+size = Vector2(100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_folwd"]
+size = Vector3(100, 100, 0.1)
 
 [node name="World" type="Node3D" unique_id=1003242573]
 
@@ -29,14 +51,56 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=847615750]
 environment = SubResource("Environment_y6flb")
 
-[node name="Floor" type="MeshInstance3D" parent="." unique_id=2064133890]
-transform = Transform3D(1, 0, 0, 0, 0.022969566, 0.9997362, 0, -0.9997362, 0.022969566, 0, 0, 0)
-mesh = SubResource("QuadMesh_hyufp")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=1355636568]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=374146154]
-shape = SubResource("BoxShape3D_kx5sw")
-
 [node name="CharacterBody3D" parent="." unique_id=816631736 instance=ExtResource("1_folwd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1391098, 0)
+
+[node name="FirstBox" type="Node3D" parent="." unique_id=429673089]
+
+[node name="Wall2" type="MeshInstance3D" parent="FirstBox" unique_id=1113068003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, -50)
+mesh = SubResource("QuadMesh_y6flb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FirstBox/Wall2" unique_id=754139787]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FirstBox/Wall2/StaticBody3D" unique_id=18207676]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
+shape = SubResource("BoxShape3D_kx5sw")
+
+[node name="Wall2" type="MeshInstance3D" parent="FirstBox/Wall2" unique_id=1086307413]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 50, 0, 50)
+mesh = SubResource("QuadMesh_il6x7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FirstBox/Wall2/Wall2" unique_id=283038482]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FirstBox/Wall2/Wall2/StaticBody3D" unique_id=662063698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
+shape = SubResource("BoxShape3D_kx5sw")
+
+[node name="Wall3" type="MeshInstance3D" parent="FirstBox/Wall2" unique_id=317365962]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 100)
+mesh = SubResource("QuadMesh_folwd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FirstBox/Wall2/Wall3" unique_id=673445677]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FirstBox/Wall2/Wall3/StaticBody3D" unique_id=1561576796]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
+shape = SubResource("BoxShape3D_kx5sw")
+
+[node name="Wall2" type="MeshInstance3D" parent="FirstBox/Wall2/Wall3" unique_id=2021800881]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 50, 0, 50)
+mesh = SubResource("QuadMesh_mlekv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FirstBox/Wall2/Wall3/Wall2" unique_id=1308028610]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FirstBox/Wall2/Wall3/Wall2/StaticBody3D" unique_id=1436963591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
+shape = SubResource("BoxShape3D_kx5sw")
+
+[node name="Floor" type="MeshInstance3D" parent="FirstBox" unique_id=2064133890]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.21652222, 0)
+mesh = SubResource("QuadMesh_hyufp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FirstBox/Floor" unique_id=1355636568]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FirstBox/Floor/StaticBody3D" unique_id=374146154]
+shape = SubResource("BoxShape3D_folwd")

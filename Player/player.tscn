@@ -38,7 +38,6 @@ text = "100
 
 [node name="Slider_Counter" type="VSlider" parent="CanvasLayer/VSplitContainer" unique_id=430745595]
 layout_mode = 2
-max_value = 1000.0
 value = 100.0
 
 [node name="Timer_counter" type="Timer" parent="." unique_id=1972702056]
