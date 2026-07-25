@@ -1,6 +1,5 @@
 extends Button
 
-
 var world_scene = preload("res://World/World.tscn").instantiate()
 
 func _on_pressed() -> void:
