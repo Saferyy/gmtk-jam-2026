@@ -2,6 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://dbn42rmuoejj1" path="res://Control_menu/option_menu.tscn" id="1_ipvss"]
 [ext_resource type="Script" uid="uid://cgtib3efhkdnp" path="res://Control_menu/play.gd" id="1_lmorp"]
+[ext_resource type="Theme" uid="uid://bsm3bqxe4b843" path="res://terminal_hack/theme/terminal.theme" id="1_oy1r4"]
+
+[sub_resource type="Gradient" id="Gradient_s53j1"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s2srw"]
+gradient = SubResource("Gradient_s53j1")
+fill_to = Vector2(0, 0.0042735045)
+
+[sub_resource type="Gradient" id="Gradient_ecnql"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_68xwu"]
+gradient = SubResource("Gradient_ecnql")
+fill_to = Vector2(0, 0)
 
 [node name="Main Menu" type="Control" unique_id=1580663029]
 layout_mode = 3
@@ -14,6 +27,34 @@ scale = Vector2(0.99204874, 1.0006089)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1427029366]
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=249374575]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -573.02386
+offset_top = -320.49786
+offset_right = 572.9762
+offset_bottom = 320.50214
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_s2srw")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer" unique_id=1604094328]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -566.57556
+offset_top = -306.48935
+offset_right = 566.42444
+offset_bottom = 306.51068
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_68xwu")
+
 [node name="Title" type="Label" parent="CanvasLayer" unique_id=408650173]
 anchors_preset = 5
 anchor_left = 0.5
@@ -24,6 +65,7 @@ offset_right = 37.0
 offset_bottom = 105.0
 grow_horizontal = 2
 size_flags_horizontal = 4
+theme = ExtResource("1_oy1r4")
 text = "RUN "
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=958443970]
@@ -32,21 +74,23 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -100.0
-offset_right = 250.0
-offset_bottom = 100.0
+offset_left = -256.0
+offset_top = -160.0
+offset_right = 244.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Play" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=243842147]
 layout_mode = 2
+theme = ExtResource("1_oy1r4")
 text = "Play"
 script = ExtResource("1_lmorp")
 
 [node name="Button" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=964934288]
 layout_mode = 2
 size_flags_vertical = 4
+theme = ExtResource("1_oy1r4")
 text = "⚙️  Settings"
 
 [node name="Option menu" parent="CanvasLayer/VBoxContainer/Button" unique_id=1952682028 instance=ExtResource("1_ipvss")]

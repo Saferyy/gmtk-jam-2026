@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://bgkmxyw21pc1m"]
+
+[ext_resource type="Script" uid="uid://de2sqbhiahmo6" path="res://Player/player/player.gd" id="1_ms4x1"]
+[ext_resource type="PackedScene" uid="uid://d32bxvldkke0m" path="res://Player/Robot/robot.blend" id="2_78vmx"]
+[ext_resource type="PackedScene" uid="uid://c0b71d2b1hdp6" path="res://Player/orbit_control/orbit_view.tscn" id="3_hcr6r"]
+[ext_resource type="Texture2D" uid="uid://cftct8ts6oxfu" path="res://assets/materials/Batterie.png" id="5_2vxam"]
+[ext_resource type="Theme" uid="uid://bsm3bqxe4b843" path="res://terminal_hack/theme/terminal.theme" id="6_0fv1w"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bv0o5"]
+friction = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xhngq"]
+height = 2.1586914
+
+[node name="Player" type="RigidBody3D" unique_id=223149958 node_paths=PackedStringArray("ray")]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_bv0o5")
+can_sleep = false
+lock_rotation = true
+custom_integrator = true
+contact_monitor = true
+max_contacts_reported = 8
+script = ExtResource("1_ms4x1")
+speed = 10.0
+acceleration = 15.0
+jump_height = null
+jump_time_to_peak = null
+jump_time_to_fall = null
+sprint_speed = 20.0
+sprint_energy_cost = null
+COUNTER = null
+value_energie = null
+rest_length = null
+stiffness = 50
+damping = 25.0
+ray = NodePath("OrbitView/RayCast3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1566102756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9206543, 0)
+shape = SubResource("CapsuleShape3D_xhngq")
+
+[node name="OrbitView" parent="." unique_id=1959227808 instance=ExtResource("3_hcr6r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6523395, 0)
+
+[node name="Camera3D2" type="Camera3D" parent="OrbitView" unique_id=593082238]
+current = true
+fov = 50.0
+
+[node name="RayCast3D" type="RayCast3D" parent="OrbitView" unique_id=1098768996]
+target_position = Vector3(0, 0, -10)
+debug_shape_custom_color = Color(0.5168821, 0.3613334, 0.8334009, 1)
+debug_shape_thickness = 5
+
+[node name="VisualRoot" type="Node3D" parent="." unique_id=1215504388]
+
+[node name="robot" parent="VisualRoot" unique_id=1863995696 instance=ExtResource("2_78vmx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8953806, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1640015813]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=1237613535]
+position = Vector2(55, 342.00003)
+scale = Vector2(1.031, 3)
+texture = ExtResource("5_2vxam")
+
+[node name="Label_counter" type="Label" parent="CanvasLayer" unique_id=1951053192]
+offset_left = 29.0
+offset_top = 177.0
+offset_right = 74.0
+offset_bottom = 244.0
+size_flags_horizontal = 4
+theme = ExtResource("6_0fv1w")
+theme_override_font_sizes/font_size = 25
+text = "100
+"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1900602365]
+offset_left = 33.590702
+offset_top = 532.2265
+offset_right = 356.00134
+offset_bottom = 569.83124
+rotation = 4.7167025
+color = Color(4.042983e-06, 0.8004635, 0.20328617, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="VSlider" type="VSlider" parent="CanvasLayer" unique_id=2005628061]
+offset_left = 44.0
+offset_top = 215.0
+offset_right = 60.0
+offset_bottom = 530.0
+max_value = 50.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer_counter" type="Timer" parent="." unique_id=833652654]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer_counter" to="." method="_on_timer_counter_timeout"]

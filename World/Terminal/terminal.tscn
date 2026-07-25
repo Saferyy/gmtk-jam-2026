@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://c1wss32vwbvyn"]
+
+[ext_resource type="Script" uid="uid://b2wsmp86txy36" path="res://World/Terminal/terminal.gd" id="1_alg3d"]
+[ext_resource type="Theme" uid="uid://bsm3bqxe4b843" path="res://terminal_hack/theme/terminal.theme" id="2_80x4p"]
+[ext_resource type="FontFile" uid="uid://cifd025jv1mg3" path="res://terminal_hack/theme/SourceCodePro-Bold.ttf" id="3_greug"]
+[ext_resource type="Texture2D" uid="uid://dbc3cw37vw2ey" path="res://World/Terminal/Hacking/Heart.png" id="4_2uyj2"]
+[ext_resource type="PackedScene" uid="uid://bkijhwc333uca" path="res://World/Terminal/Hacking/character_body_2d.tscn" id="5_ryjxk"]
+
+[sub_resource type="Gradient" id="Gradient_v62rv"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kx5sw"]
+gradient = SubResource("Gradient_v62rv")
+fill_to = Vector2(0, 0.0042735045)
+
+[sub_resource type="Gradient" id="Gradient_d876y"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q0guv"]
+gradient = SubResource("Gradient_d876y")
+fill_to = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tl0hy"]
+font = ExtResource("3_greug")
+
+[node name="Terminal" type="Control" unique_id=116135165]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_alg3d")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1247894700]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -573.0
+offset_top = -320.5
+offset_right = 573.0
+offset_bottom = 320.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_kx5sw")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1134773949]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -566.5
+offset_top = -306.5
+offset_right = 566.5
+offset_bottom = 306.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_q0guv")
+
+[node name="Button2" type="Button" parent="TextureRect2" unique_id=720357578]
+layout_mode = 0
+offset_left = 498.5
+offset_top = 305.5
+offset_right = 626.5
+offset_bottom = 364.5
+theme = ExtResource("2_80x4p")
+text = "Start"
+
+[node name="Goal" type="Label" parent="TextureRect2" unique_id=97362076]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -343.0
+offset_top = -289.0
+offset_right = -67.0
+offset_bottom = -218.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_80x4p")
+text = "Goal ="
+label_settings = SubResource("LabelSettings_tl0hy")
+
+[node name="Score" type="Label" parent="TextureRect2" unique_id=1605687113]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -294.0
+offset_right = 171.0
+offset_bottom = -223.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_80x4p")
+text = "Score = "
+label_settings = SubResource("LabelSettings_tl0hy")
+
+[node name="Heart" type="Sprite2D" parent="TextureRect2" unique_id=2066389043]
+position = Vector2(103.5, 25.5)
+texture = ExtResource("4_2uyj2")
+
+[node name="Heart2" type="Sprite2D" parent="TextureRect2/Heart" unique_id=951859098]
+position = Vector2(35, 1)
+texture = ExtResource("4_2uyj2")
+
+[node name="Heart3" type="Sprite2D" parent="TextureRect2/Heart/Heart2" unique_id=1442098547]
+position = Vector2(35, 1)
+texture = ExtResource("4_2uyj2")
+
+[node name="Button" type="Button" parent="TextureRect2" unique_id=1483235217]
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 17.0
+offset_right = 1103.0
+offset_bottom = 80.0
+theme = ExtResource("2_80x4p")
+text = "x"
+
+[node name="CharacterBody2D" parent="TextureRect2/Button" unique_id=84519894 groups=["player"] instance=ExtResource("5_ryjxk")]
+position = Vector2(-460.5, 319.5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=328938024]
+position = Vector2(-556, -304)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=734558267]
+polygon = PackedVector2Array(10, 18, 10, 12, 1143, 12, 1145, 635, 4, 634, 7, 15, 9, 15, 10, 20, 10, 631, 1143, 631, 1143, 18)
+
+[connection signal="button_down" from="TextureRect2/Button2" to="." method="_on_button_2_button_down"]
+[connection signal="pressed" from="TextureRect2/Button" to="." method="_on_button_pressed"]
+[connection signal="Minus_HP" from="TextureRect2/Button/CharacterBody2D" to="." method="_on_character_body_2d_minus_hp"]

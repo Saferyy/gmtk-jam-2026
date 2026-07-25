@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bbwkmgok8mmt2" path="res://Control_menu/audio_option.gd" id="1_drhll"]
 [ext_resource type="Script" uid="uid://buh62ki5lh6rw" path="res://Control_menu/option_menu.gd" id="1_glkfw"]
+[ext_resource type="Theme" uid="uid://bsm3bqxe4b843" path="res://terminal_hack/theme/terminal.theme" id="3_0chcq"]
 
 [node name="Option menu" type="Control" unique_id=1952682028]
 layout_mode = 3
@@ -26,6 +27,7 @@ script = ExtResource("1_drhll")
 layout_mode = 1
 offset_right = 500.0
 offset_bottom = 200.0
+theme = ExtResource("3_0chcq")
 
 [node name="Label Master" type="Label" parent="AudioOption/VBoxContainer" unique_id=1539439285]
 layout_mode = 2
