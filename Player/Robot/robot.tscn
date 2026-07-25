@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://brndpq4tnv6kd"]
+
+[ext_resource type="PackedScene" uid="uid://d32bxvldkke0m" path="res://Player/Robot/robot.blend" id="1_6581l"]
+[ext_resource type="Texture2D" uid="uid://d1v3oa6h5nl3e" path="res://Player/360_F_316727102_0qGaedt0L0ZrmTs3WOC4VItwdRCJAvN0.jpg" id="2_r0x2t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ru5oq"]
+albedo_texture = ExtResource("2_r0x2t")
+
+[node name="robot" unique_id=738970009 instance=ExtResource("1_6581l")]
+
+[node name="Cube" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(434601964) index="0" unique_id=895057109]
+material_override = SubResource("StandardMaterial3D_ru5oq")
