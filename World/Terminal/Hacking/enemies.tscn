@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c4x84e5ge641f"]
+
+[ext_resource type="Script" uid="uid://b0vrkrvtt2077" path="res://World/Terminal/Hacking/enemies.gd" id="1_x0xjj"]
+[ext_resource type="Texture2D" uid="uid://5lgr85w7rrew" path="res://World/Terminal/Hacking/Ennemies.png" id="2_rpjvo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kx5sw"]
+radius = 12.0415945
+
+[node name="CharacterBody2D" type="Area2D" unique_id=231181917 groups=["enemies"]]
+rotation = -1.5707964
+script = ExtResource("1_x0xjj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=275395480]
+rotation = 1.5707964
+texture = ExtResource("2_rpjvo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=331574884]
+shape = SubResource("CircleShape2D_kx5sw")
+
+[node name="MoveTimer" type="Timer" parent="." unique_id=2004753548]
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=889789825]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

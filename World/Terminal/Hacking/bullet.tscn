@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cuh1446to4xcv"]
+
+[ext_resource type="Script" uid="uid://dccyvpnrgsjhc" path="res://World/Terminal/Hacking/shoot.gd" id="1_qethp"]
+[ext_resource type="Texture2D" uid="uid://bbser38u0t3ge" path="res://World/Terminal/Hacking/Shoot.png" id="2_fe4qu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kx5sw"]
+radius = 12.0415945
+
+[node name="Area2D2" type="Area2D" unique_id=774764311]
+script = ExtResource("1_qethp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1475557888]
+shape = SubResource("CircleShape2D_kx5sw")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=394483342]
+rotation = -3.1415925
+texture = ExtResource("2_fe4qu")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=585044841]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
